@@ -53,7 +53,8 @@
       "template"
     ],
     "types": [
-      "vite/client"
+      "vite/client",
+      "./types.d.ts"
     ]
   }
 }
