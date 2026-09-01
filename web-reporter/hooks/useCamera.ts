@@ -22,24 +22,31 @@ export const useCamera = () => {
         }
 
         function startCamera() {
+            const stream = previewRef.current?.srcObject as MediaStream | null;
+            if (stream?.getTracks().some(track => track.readyState === 'live')) return;
+
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-                if (previewRef.current) previewRef.current.srcObject = stream;                
+                if (previewRef.current) previewRef.current.srcObject = stream;
             });
         }
 
-        function handleVisibilityChange() {
-            if (document.hidden) {
-                stopCamera();
-            } else {
-                startCamera();
-            }
+        function handlePause() {
+            if (document.hidden || !document.hasFocus()) stopCamera();
+        }
+
+        function handleResume() {
+            if (!document.hidden && document.hasFocus()) startCamera();
         }
 
         startCamera();
-        document.addEventListener('visibilitychange', handleVisibilityChange);
+        document.addEventListener('visibilitychange', handlePause);
+        self.addEventListener('blur', handlePause);
+        self.addEventListener('focus', handleResume);
 
         return () => {
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            document.removeEventListener('visibilitychange', handlePause);
+            self.removeEventListener('blur', handlePause);
+            self.removeEventListener('focus', handleResume);
             stopCamera();
         };
     }, [previewRef.current]);
