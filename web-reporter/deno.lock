@@ -37,6 +37,7 @@
     "npm:@prefresh/vite@^2.4.8": "2.4.12_preact@10.29.8_vite@7.3.6_preact-render-to-string@6.7.0",
     "npm:@remix-run/node-fetch-server@0.12": "0.12.0",
     "npm:@types/babel__core@^7.20.5": "7.20.5",
+    "npm:@vitejs/plugin-basic-ssl@^1.2.0": "1.2.0_vite@7.3.6",
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.12",
@@ -981,6 +982,12 @@
     "@types/estree@1.0.9": {
       "integrity": "sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg=="
     },
+    "@vitejs/plugin-basic-ssl@1.2.0_vite@7.3.6": {
+      "integrity": "sha512-mkQnxTkcldAzIsomk1UuLfAu9n+kpQ3JbHcpCp7d2Oo6ITtji8pHS3QToOWjhPFvNQSnhlkAjmGbhv2QvwO/7Q==",
+      "dependencies": [
+        "vite"
+      ]
+    },
     "baseline-browser-mapping@2.11.4": {
       "integrity": "sha512-s4+sLr9mZ/CyqeRritFeYV/Zx73OAtmaHn6kkBS1XRoJn1hrg3xIDUcpicAEX68tkcIN0iBCgti31C8zxtkhsQ==",
       "bin": true
@@ -1280,6 +1287,7 @@
       "jsr:@fresh/plugin-vite@^1.1.2",
       "npm:@preact/signals@^2.9.0",
       "npm:@types/babel__core@^7.20.5",
+      "npm:@vitejs/plugin-basic-ssl@^1.2.0",
       "npm:preact@^10.29.1",
       "npm:vite@^7.1.3"
     ]

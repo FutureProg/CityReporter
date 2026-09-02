@@ -9,7 +9,9 @@ export const useCamera = () => {
         if (!previewRef.current) return;
 
         const constraints = {
-            video: true
+            video: {
+                facingMode: 'environment'
+            }
         } satisfies MediaStreamConstraints;
 
         function stopCamera() {            

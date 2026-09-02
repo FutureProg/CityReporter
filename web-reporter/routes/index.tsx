@@ -13,10 +13,12 @@ export default define.page(function Home(ctx) {
         <title>City Reporter</title>
       </Head>      
         <div>
-          <Camera />
-        </div>
+          <Camera />          
+        </div>        
         <div>
-          Textbox
+          <textarea class="message-text">            
+          </textarea>
+          <input type="submit"/>
         </div>      
     </main>
   );

@@ -43,3 +43,17 @@ html {
   grid-template-rows: 3fr 1fr;  
   height: 100dvh;  
 }
+
+.message-row {
+  display: grid;
+  grid-template-columns: max-content 80px;
+}
+
+.message-text {
+  field-sizing: content;
+  resize: none; /* disables manual handle if auto-growing */
+  min-height: 80px;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+}
