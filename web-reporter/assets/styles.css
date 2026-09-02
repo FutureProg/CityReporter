@@ -40,13 +40,17 @@ html {
 
 .app-view {
   display: grid;
-  grid-template-rows: 3fr 1fr;  
+  grid-template-rows: 3fr 1fr 1fr;  
   height: 100dvh;  
+}
+
+.image-row {
+  position: relative;  
 }
 
 .message-row {
   display: grid;
-  grid-template-columns: max-content 80px;
+  grid-template-columns: calc(100% - 80px) 80px;  
 }
 
 .message-text {
