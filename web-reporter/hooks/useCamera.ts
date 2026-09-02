@@ -1,9 +1,17 @@
 import { useSignalRef } from "@preact/signals/utils";
-import { useEffect } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
+import { Signal } from "@preact/signals";
 
 export const useCamera = () => {
-    const previewRef = useSignalRef<HTMLVideoElement | null>(null);  
+    const previewRef = useSignalRef<HTMLVideoElement | null>(null);
+    const imageCapture = useRef<ImageCapture | null>(null);
     const isCameraSupported = 'mediaDevices' in navigator;
+
+    async function capturePhoto(){
+        if (imageCapture.current) {
+            return imageCapture.current.takePhoto()                    
+        }
+    }
 
     useEffect(() => {
         if (!previewRef.current) return;
@@ -16,19 +24,24 @@ export const useCamera = () => {
 
         function stopCamera() {            
             const stream = previewRef.current?.srcObject as MediaStream | null;
-            stream?.getTracks().forEach(track => track.stop());
+            stream?.getTracks().forEach(track => track.stop());            
             if (previewRef.current) {
-                console.log("Stop Camera");
+                console.log("Stop Camera");                
+                imageCapture.current = null;
                 previewRef.current.srcObject = null;
-            }            
-        }
+            }
+        }        
 
         function startCamera() {
-            const stream = previewRef.current?.srcObject as MediaStream | null;
+            const stream = previewRef.current?.srcObject as MediaStream | null;            
             if (stream?.getTracks().some(track => track.readyState === 'live')) return;
 
             navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-                if (previewRef.current) previewRef.current.srcObject = stream;
+                if (previewRef.current){
+                    previewRef.current.srcObject = stream;
+                    const track = stream.getVideoTracks()[0];
+                    imageCapture.current = new ImageCapture(track);
+                } 
             });
         }
 
@@ -55,6 +68,7 @@ export const useCamera = () => {
 
     return {
         isCameraSupported,
-        videoElementRef: previewRef
+        videoElementRef: previewRef,
+        capturePhoto
     }
 }

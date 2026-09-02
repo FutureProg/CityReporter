@@ -1,13 +1,15 @@
 import { Signal } from "@preact/signals";
 import styles from '@/islands/ImageFeed.module.css';
+import { ImagesSignal } from "@/signals.ts";
 
 export type ImageFeedProps = {
-    images: Signal<ImageBitmap[]>;
+    imagesSignal: ImagesSignal;
 }
 
-export const ImageFeed = ({images}: ImageFeedProps) => {
-    const imagePreview = images.value.map((img, idx) => {      
-        return <img src="" key={idx} />
+export const ImageFeed = ({imagesSignal: images}: ImageFeedProps) => {
+    const imagePreview = images.value.map((imgBlob, idx) => {     
+        const imageUrl = URL.createObjectURL(imgBlob) 
+        return <img src={imageUrl} key={idx} />
     });
     return (
         <div className={styles.view}>
