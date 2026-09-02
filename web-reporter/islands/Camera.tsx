@@ -13,7 +13,8 @@ export default function Camera() {
         playsInline
         autoPlay
       >
-      </video>      
+      </video>
+      <button type="button" className={styles.captureButton}>Capture</button> 
     </div>
   );
 }
