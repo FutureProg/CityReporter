@@ -40,7 +40,7 @@ html {
 
 .app-view {
   display: grid;
-  grid-template-rows: 3fr 1fr 1fr;  
+  grid-template-rows: 3fr 80px 1fr;  
   height: 100dvh;  
 }
 

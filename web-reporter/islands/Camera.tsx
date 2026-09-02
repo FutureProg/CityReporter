@@ -1,4 +1,3 @@
-import { Signal } from "@preact/signals";
 import styles from "./Camera.module.css";
 import { useCamera } from "@/hooks/useCamera.ts";
 import { ImagesSignal } from "@/signals.ts";

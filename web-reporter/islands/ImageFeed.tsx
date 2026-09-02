@@ -1,4 +1,3 @@
-import { Signal } from "@preact/signals";
 import styles from '@/islands/ImageFeed.module.css';
 import { ImagesSignal } from "@/signals.ts";
 
