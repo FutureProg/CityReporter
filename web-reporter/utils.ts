@@ -7,3 +7,19 @@ export interface State {
 }
 
 export const define = createDefine<State>();
+
+
+export const pickClassNames = (...args: (string | {[key: string]: boolean} )[]): string => {
+  return args.flat()
+      .map((val) => {
+        if (typeof val === 'string') {
+          return val;
+        } else {
+          return Object.entries(val)
+            .filter(([_key, evaluation]) => evaluation)
+            .map(([key, ]) => key);
+        }
+      })
+      .flat()
+      .join(' ');
+}

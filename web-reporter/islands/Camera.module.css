@@ -10,8 +10,21 @@
     flex-direction: row;
 }
 
+.loadingIcon {
+    display: none;
+    position: absolute;
+    width: 40px;
+    height: 40px;    
+    &.visible {
+        display: inline;
+    }
+}
+
 .preview {
-    height: 100%;     
+    height: 100%;
+    &.dim {
+        filter: brightness(0.5);
+    }    
 }
 
 .captureButton {

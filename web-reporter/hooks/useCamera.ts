@@ -1,16 +1,16 @@
 import { useSignalRef } from "@preact/signals/utils";
 import { useEffect, useRef } from "preact/hooks";
-import { Signal } from "@preact/signals";
 
 export const useCamera = () => {
     const previewRef = useSignalRef<HTMLVideoElement | null>(null);
-    const imageCapture = useRef<ImageCapture | null>(null);
+    const imageCapture = useRef<ImageCapture | null>(null); 
     const isCameraSupported = 'mediaDevices' in navigator;
 
-    async function capturePhoto(){
+    function capturePhoto() {
         if (imageCapture.current) {
-            return imageCapture.current.takePhoto()                    
+            return imageCapture.current.takePhoto();
         }
+        return Promise.reject('Image Capture Failed');
     }
 
     useEffect(() => {
