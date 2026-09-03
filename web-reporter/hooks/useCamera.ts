@@ -33,6 +33,7 @@ export const useCamera = () => {
         }        
 
         function startCamera() {
+            if (document.visibilityState === "hidden") return;
             const stream = previewRef.current?.srcObject as MediaStream | null;            
             if (stream?.getTracks().some(track => track.readyState === 'live')) return;
 
