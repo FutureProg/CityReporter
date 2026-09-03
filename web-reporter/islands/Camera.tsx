@@ -2,6 +2,7 @@ import styles from "./Camera.module.css";
 import { useCamera } from "@/hooks/useCamera.ts";
 import { ImagesSignal } from "@/signals.ts";
 import LoadingSVG from '@/assets/loading-blocks-wave.svg';
+import CameraIcon from '@/assets/camera-icon.svg';
 import { pickClassNames } from "@/utils.ts";
 import { useSignal } from "@preact/signals";
 
@@ -26,7 +27,7 @@ export default function Camera({imagesSignal} : CameraProps) {
   };
 
   return (
-    <div className={styles.view}>
+    <div className={styles.view} aria-busy={isCapturingPhoto.value}>
       <video
         ref={videoElementRef}
         className={pickClassNames(styles.preview,{
@@ -37,13 +38,21 @@ export default function Camera({imagesSignal} : CameraProps) {
         autoPlay
       >
       </video>
-      <img className={pickClassNames(
+      <img 
+        aria-hidden
+        className={pickClassNames(
         styles.loadingIcon, {[styles.visible]: isCapturingPhoto.value})} 
         src={LoadingSVG} />
       <button 
-        disabled={isCapturingPhoto} 
-        aria-disabled={isCapturingPhoto}
-        type="button" onClick={onCapture} className={styles.captureButton}>Capture</button> 
+        disabled={isCapturingPhoto.value} 
+        
+        aria-disabled={isCapturingPhoto.value}
+        type="button" onClick={onCapture} className={styles.captureButton}>
+          <img src={CameraIcon} alt="image capture button"/>
+      </button> 
+      <span className='visually-hidden' role="status">
+        {isCapturingPhoto.value ? "Capturing photo...": ""}
+      </span>
     </div>
   );
 }
