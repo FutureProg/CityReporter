@@ -28,6 +28,9 @@ export const ImageFeed = ({imagesSignal: images}: ImageFeedProps) => {
     
     return (
         <div className={styles.view} ref={viewRef}>
+            <button className={styles.buttonItem} type="button" role="button" aria-label="Open the camera">
+                <span className={styles.icon} aria-hidden="true" />
+            </button>
             {imagePreview}
         </div>
     )

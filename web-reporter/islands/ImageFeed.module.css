@@ -1,6 +1,8 @@
 .view {        
     width: 100%;    
-    height: 100%;   
+    height: 100%;
+    position: relative;
+    background: rgba(0,0,0,0.2);
     
     display: flex;
     flex-wrap: nowrap;
@@ -13,9 +15,42 @@
     overflow-x: scroll;
     max-width: 100vw;
     scroll-behavior: smooth;
+    img {
+        height: 100%;
+        border-radius: 3px;
+    }
 }
 
-img {
-    height: 100%;
-    border-radius: 3px;
+.buttonItem {
+    --bg: alpha(from white / 75%);
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;    
+    border: 1px solid transparent;
+    border-radius: 24px;
+    background: linear-gradient(var(--bg), var(--bg))  padding-box,
+                linear-gradient(to bottom, transparent, white) border-box;
+    /* backdrop-filter: blur(0.5); */    
+    
+    padding: 8px 16px;
+
+    .icon {
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+
+        background: linear-gradient(90deg,rgba(53, 154, 242, 1) 0%, rgba(237, 134, 83, 1) 100%);
+
+        -webkit-mask-image: url('../assets/camera-icon.svg');
+        mask-image: url('../assets/camera-icon.svg');
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+    }
 }
