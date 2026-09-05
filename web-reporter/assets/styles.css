@@ -45,8 +45,13 @@ html {
   height: 100dvh;  
 }
 
+.camera-roll {
+  min-height: 0;
+  overflow: hidden;
+}
+
 .image-row {
-  position: relative;  
+  position: relative;
 }
 
 .message-row {

@@ -1,8 +1,7 @@
 .view {
     position: relative;
     display: flex;
-    background: black;
-    width: 100dvw;    
+    background: #000000;    
     height: 100%;
 
     justify-content: center;

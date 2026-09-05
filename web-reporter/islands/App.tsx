@@ -1,5 +1,5 @@
 import { ImageFeed } from "@/islands/ImageFeed.tsx";
-import Camera from "@/islands/Camera.tsx";
+import { Carousel } from "@/islands/Carousel.tsx";
 import { ImagesSignal, createImagesSignal } from "@/signals.ts";
 
 export const App = () => {
@@ -7,7 +7,7 @@ export const App = () => {
   return (
     <>
       <div className="camera-roll">
-        <Camera imagesSignal={capturedImages} />
+        <Carousel imagesSignal={capturedImages} />
       </div>
       <div class="image-row">
         <ImageFeed imagesSignal={capturedImages} />

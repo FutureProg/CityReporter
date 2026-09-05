@@ -1,0 +1,43 @@
+.view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    /* Center the row while it fits; once slides overflow, "safe" keeps the
+       start of the row reachable instead of scrolling off into negative space. */
+    justify-content: flex-start;
+    justify-content: safe center;
+}
+
+.slide {
+    /* Width comes from the slide's own content (the portrait video/photo),
+       not a fixed fraction of the row, so no letterboxing is needed. */
+    flex: 0 0 auto;
+    height: 100%;
+    min-height: 0;
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.photoSlide {
+    height: 100%;
+
+    img {
+        height: 100%;
+        width: auto;
+        border-radius: 8px;
+    }
+}
